@@ -21,7 +21,8 @@ sigma <- c(0.1,0.1,0.1,0.1,0.1,0.1,0.1)  # sigma (standard deviation of each pro
 cosopt(data,sigma,timepoints,plotting=TRUE) # run COSOPT
 
 ## Supplementary data
-All supplementary data are available from the github wiki page (left). 
+All supplementary data are available from [the github wiki page](https://github.com/mhiromi/cosopt/wiki/Supplementary-data).
+
 
 ## Citation 
 Please cite the following paper if you used this program.
