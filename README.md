@@ -3,7 +3,7 @@ Bioinformatics / detection of periodic patterns in gene expression data
 
 
 ## Release Info
-Realsed in March 8, 2015.
+Realsed in April 6, 2015.
 
 ##Introduction
 COSOPT is a statistical method to distinguish a period and phase for a transcript in time-series gene expression analysis.  The source code is provided by C language and R. 
