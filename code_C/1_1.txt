@@ -1,0 +1,37 @@
+/usr/local/gridengine/default/spool/n101/active_jobs/5239554.1/pe_hostfile
+n101
+n101
+n101
+n101
+n101
+n101
+n101
+n101
+n001
+n001
+mpiexec_n101: cannot connect to local mpd (/tmp/mpd2.console_ishiwata); possible causes:
+  1. no mpd is running on this host
+  2. an mpd is running but was started without a "console" (-n option)
+In case 1, you can start an mpd on this host with:
+    mpd &
+and you will be able to run jobs just on this host.
+For more details on starting mpds on a set of hosts, see
+the MPICH2 Installation Guide.
+/usr/local/gridengine/default/spool/n101/active_jobs/5239555.1/pe_hostfile
+n101
+n101
+n101
+n101
+n101
+n101
+n101
+n101
+n005
+n005
+1,26.755853,11,1.312546
+2,11.994003,-42,0.000638
+3,21.447721,26,1.200710
+4,22.408964,42,0.539776
+5,8.724100,-16,0.111732
+6,12.030075,-41,0.000319
+7,23.391813,4,0.333526

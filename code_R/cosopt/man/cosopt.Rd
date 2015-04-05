@@ -1,0 +1,29 @@
+\name{cosopt-package}
+\alias{cosopt}
+\docType{package}
+\title{
+  cosopt
+}
+\description{
+  cosopt
+}
+\details{
+  cosopt
+}
+\author{
+  Hiromi Matsumae
+  Ryosuke R.Ishiwata
+  Soichi Ogishima
+  Maintainer: Hiromi Matsumae < hiromi.matsumae @ gmail. com > 
+}
+\references{
+  Straume, M. (2004) DNA microarray time series analysis: automated statistical assessment of circadian rhythms in gene expression patterning. Meth. Enzymol,.383,149-161
+}
+\examples{
+data <- c(-1,0,1,0,-1,0,1)
+timepoints <- c(0,8,16,24,32,40,48)
+sigma <- c(0.1,0.1,0.1,0.1,0.1,0.1,0.1)
+cosopt(data,sigma,timepoints,plotting=TRUE)
+}
+\keyword{ts}
+\seealso{}
