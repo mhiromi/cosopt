@@ -1,0 +1,21 @@
+.packageName <- "cosopt"
+`cosopt` <-
+function(data,sigma,timepoints)
+{
+	library.dynam("cosopt")
+	if(missing(data) || missing(sigma) || missing(timepoints)){
+		stop(message="Please put a correct data.")
+	}
+	if(ncol(data) < 2){
+		stop(message="Input time course data hase more than 2 points.")
+	}
+	if(ncol(data) != length(timepoints)){
+		stop(message="Please equal number of timecourse column and number of timepoints column.")
+	}
+	if(nrow(data) != nrow(sigma) || ncol(data) != ncol(sigma)){
+		stop(message="Please equal dimension of timecourse data and sigma data.")
+	}
+	
+	ans <- .C("cosopt",as.double(data),as.double(sigma),as.double(timepoints),nrow(data),ncol(data),as.double(rep(0,length=nrow(data)*2)),PACKAGE="cosopt")
+	return(ans)
+}

@@ -1,0 +1,36 @@
+このディレクトリ自体を自分のホーム以下にコピーしてください
+
+自分のホームディレクトリ直下などに、mpd.hosts,.rhostsというファイルを作っておく
+内容は以下のようにサーバーの名前、もしくはIP
+コピーする場合は、/home3/ishiwata/mpd.hosts,/home3/ishiwata/.rhostsから
+
+.mpd.confの設定
+ホームディレクトリ直下に".mpd.conf"を作成する。
+内容は、secretword=適当なパスワード
+コピーする場合は以下のコマンドを使うこと。また、このファイルはchmod 600にしておくこと
+cp ~ishiwata/dot.mpd.conf ~/.mpd.conf
+chmod 600 ~/.mpd.conf
+
+mpdの起動
+/home3/ishiwata/mpich2/bin/mpdboot --rsh=rsh -n `wc -l ~/mpd.hosts|awk '{print $1;}'` -f ~/mpd.hosts
+
+COSOPTのコンパイルコマンド(コピーしたCOSOPTディレクトリで以下を実行)
+/home3/ishiwata/bin/mpicc mpi_cosopt.c -o mpi_cosopt -lm -ldsfmt -lsfmt -L/home3/ishiwata/lib -I/home3/ishiwata/include -O3
+Makeを使う
+make allでできあがるようにしておいた
+
+mpdのプロセスを殺す方法(全てishiwataのmpich2ディレクトリ以下にあるbinのコマンド)
+mpdlistjobs
+mpdkilljob
+
+mpd自体を殺す方法(全てishiwataのmpich2ディレクトリ以下にあるbinのコマンド)
+/home3/ishiwata/mpich2/bin/mpdallexit
+
+
+SGEへの仕事の割当
+mpicalc.plを使う。ソースは見れば分かる程度になっている。
+コマンド
+./mpicalc.pl [データファイルパス] [リザルトの名前] [イテレーション回数(整数)]
+コマンド例
+./mpicalc.pl ~matsumae/norm2exprs.csv circadian/result 2
+とかやると、このcircadianディレクトリにresult_1.txtとresult_2.txtができあがる

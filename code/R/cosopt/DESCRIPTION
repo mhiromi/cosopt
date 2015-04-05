@@ -1,0 +1,9 @@
+Package: cosopt
+Type: Package
+Title: cosopt
+Version: 0.1
+Date: 2009-03-07
+Author: Ryosuke R.Ishiwata, Hiromi Matsumae, Soichi Ogishima
+Maintainer: Hiromi Matsumae < hiromi.matsumae @ gmail. com > 
+Description: COSOPT, Statistical Assessment of Daily Rhythms in Microarray Data 
+License: BSD LICENCE
