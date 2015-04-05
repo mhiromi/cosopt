@@ -14,7 +14,7 @@ IMPORTANT: This COSOPT has a small difference from the original COSOPT described
 ## Source Code
 
 ### original source code written in C
-The code is in code_R.
+The code is in code_R/.
 
 ### Running COSOPT on R
 It is recommended to run COSOPT against a small number of samples on R.
@@ -37,7 +37,7 @@ All supplementary data are available from [the github wiki page](https://github.
 ## Citation 
 Please cite the following paper if you used this program.
 
-* Hiromi Matsumae, Ryosuke Ishiwata, Toshifumi Minamoto, Norio Ishida, Soichi Ogishima,  and Hiroshi Tanaka. <I> submitted </I>.
+* Hiromi Matsumae, Ryosuke Ishiwata, Toshifumi Minamoto, Norio Ishida, Soichi Ogishima, and Hiroshi Tanaka. <I> submitted</I>.
 
 
 ## Contact 
