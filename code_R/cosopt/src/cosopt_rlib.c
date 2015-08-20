@@ -3,8 +3,6 @@
 #include <Rinternals.h>
 #include <stdlib.h>
 
-#define MAX 1024
-
 #define PERCENTILE 1.96
 
 #define PHASE_NUM 101
@@ -26,18 +24,25 @@ typedef struct sample{
   double *random_sample_mean;
   int random_sample_number;
   double **zscore;
-
   double average;
   double *sigma;
 }Sample;
 
+int linear_regression(double *x,double *y,unsigned int size,double *a,double *b);
+double calculate_SSR(double a,double b,double *x,double *y,int size);
+int generate_sample_mean(Sample *samples,int samples_number);
+int generate_random_samples(Sample *samples,int samples_number);
+int generate_test_cosine(double *test_cosine,double *test_cosine_mean,double *time_points,int sample_num);
+int calculate_minimum_SSR(Sample *samples, int sample_num, double *test_cosine, double *test_cosine_mean, int *plotting, double *ans);
+void cosopt(double *microarray,double *sigma,double *time_points,int *mrow,int *mcol,int *plotting,double *ans);
+
 int linear_regression(double *x,double *y,unsigned int size,double *a,double *b)
 {
-  int i,j,k;
+  unsigned int i;
   double x_square_total,x_total;
   double y_total,x_multiple_y_total,x_total_square;
   x_square_total = x_total = y_total = x_multiple_y_total = x_total_square = 0;
-  for(i=0;i<size;i++){
+  for(i=0; i < size;i++){
     x_total += x[i];
     x_square_total += x[i] * x[i];
     y_total += y[i];
@@ -64,9 +69,9 @@ double calculate_SSR(double a,double b,double *x,double *y,int size){
   return distance;
 }
 
-void generate_sample_mean(Sample *samples,int samples_number)
+int generate_sample_mean(Sample *samples,int samples_number)
 {
-  int i,j,k,l;
+  int i,j;
   for(i=0;i< samples_number;i++){
     double mean = 0;
     for(j=0;j<samples[i].timepoint_number;j++){
@@ -74,6 +79,8 @@ void generate_sample_mean(Sample *samples,int samples_number)
     }
     samples[i].sample_mean = mean / samples[i].timepoint_number;
   }
+
+  return 0;
 }
 
 // generate random samples
@@ -83,7 +90,6 @@ int generate_random_samples(Sample *samples,int samples_number)
   double *nr;
   int rt = 0;
 
-  // for using norm_rand
   GetRNGstate();
 
   if(samples != NULL)rt = samples[0].timepoint_number;
@@ -100,7 +106,7 @@ int generate_random_samples(Sample *samples,int samples_number)
       samples[i].random_sample[j] = (double*)R_alloc(samples[i].timepoint_number,sizeof(double));
       memcpy(samples[i].random_sample[j],samples[i].sample,samples[i].timepoint_number*sizeof(double));
       for(k=0;k<samples[i].timepoint_number;k++){
-        int n = rand() % samples[i].timepoint_number;
+        int n = (int)(unif_rand() * samples[i].timepoint_number);
         double tmp = samples[i].random_sample[j][n];
         samples[i].random_sample[j][n] =  samples[i].random_sample[j][1];
         samples[i].random_sample[j][1] = tmp;
@@ -117,10 +123,9 @@ int generate_random_samples(Sample *samples,int samples_number)
       samples[i].random_sample_mean[j] = (rm / samples[i].timepoint_number);
     }
   }
-  // for using norm_rand
   PutRNGstate();
 
-  return 1;
+  return 0;
 }
 
 int generate_test_cosine(double *test_cosine,double *test_cosine_mean,double *time_points,int sample_num)
@@ -161,21 +166,23 @@ int generate_test_cosine(double *test_cosine,double *test_cosine_mean,double *ti
       mean_counter++;
     }
   }
-  return 1;
+
+  return 0;
 }
 
 int calculate_minimum_SSR(Sample *samples, int sample_num, double *test_cosine, double *test_cosine_mean, int *plotting, double *ans){
   double i;
   double a,b;
   double distance;
-  double *surr_distance;
-  int j,k,l,m;
-  int counter;
+  double *surr_distance=NULL;
+  int j,l,m;
   int freq_counter;
   int phase_counter;
-  int rsn;
+  int rsn=0;
 
-  if(samples != NULL)rsn = samples[0].random_sample_number;
+  if(samples != NULL){
+    rsn = samples[0].random_sample_number;
+  }
   if(rsn > 0){
     int x;
     surr_distance = (double*)R_alloc(rsn,sizeof(double));
@@ -233,15 +240,14 @@ int calculate_minimum_SSR(Sample *samples, int sample_num, double *test_cosine, 
       ans[l*RESULT+1] = 0;
     }
   }
-
-  return 1;
+  return 0;
 }
 
 // arg1: matrix(samples,row=sample,col=time-course)
 void cosopt(double *microarray,double *sigma,double *time_points,int *mrow,int *mcol,int *plotting,double *ans){
   double *test_cosine;
   double *test_cosine_mean;
-  int i,j,k,l;
+  int i,j;
 
   int sample_num,gene_num;
   Sample *samples;
@@ -256,7 +262,9 @@ void cosopt(double *microarray,double *sigma,double *time_points,int *mrow,int *
   test_cosine = (double*)R_alloc(PHASE_NUM * FREQUENCY_NUM * sample_num,sizeof(double));
   test_cosine_mean = (double*)R_alloc(PHASE_NUM * FREQUENCY_NUM,sizeof(double));
   //warning("number of test cosine = %d\n",PHASE_NUM * FREQUENCY_NUM * sample_num);
-  if(test_cosine == NULL || test_cosine_mean == NULL)exit(1);
+  if(test_cosine == NULL || test_cosine_mean == NULL){
+    error("Memory allocation error\n");
+  }
   for(i=0;i<PHASE_NUM * FREQUENCY_NUM;i++){
     test_cosine_mean[i] = 0;
   }
@@ -264,7 +272,6 @@ void cosopt(double *microarray,double *sigma,double *time_points,int *mrow,int *
 
   samples = (Sample*)R_alloc(gene_num,sizeof(Sample));
   for(i=0;i<gene_num;i++){
-    int j;
     samples[i].gene_count = i;
     samples[i].sample = (double*)R_alloc(sample_num,sizeof(double));
     samples[i].sigma = (double*)R_alloc(sample_num,sizeof(double));

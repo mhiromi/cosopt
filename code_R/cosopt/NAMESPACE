@@ -1,0 +1,2 @@
+useDynLib(cosopt)
+export(cosopt)

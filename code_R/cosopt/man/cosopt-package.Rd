@@ -14,7 +14,7 @@
 	Ryosuke R.Ishiwata
 	Hiromi Matsumae
 	Soichi Ogishima
-	Maintainer: Hiromi Matsumae < hiromi.matsumae @ gmail. com > 
+	Maintainer: Hiromi Matsumae<hiromi.matsumae@gmail.com>
 }
 \references{
 	Straume, M. (2004) DNA microarray time series analysis: automated statistical assessment of circadian rhythms in gene expression patterning. Meth. Enzymol,.383,149-161

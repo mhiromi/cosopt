@@ -1,5 +1,5 @@
 \name{cosopt-package}
-\alias{cosopt}
+\alias{cosopt-package}
 \docType{package}
 \title{
 	cosopt
@@ -14,16 +14,10 @@
 	Ryosuke R.Ishiwata
 	Hiromi Matsumae
 	Soichi Ogishima
-	Maintainer: Hiromi Matsumae<hiromi.matsumae@gmail.com>
+	Maintainer: Soichi Ogishima <ogishima@bioinfo.tmd.ac.jp>
 }
 \references{
 	Straume, M. (2004) DNA microarray time series analysis: automated statistical assessment of circadian rhythms in gene expression patterning. Meth. Enzymol,.383,149-161
-}
-\examples{
-data <- c(-1,0,1,0,-1,0,1)
-timepoints <- c(0,8,16,24,32,40,48)
-sigma <- c(0.1,0.1,0.1,0.1,0.1,0.1,0.1)
-cosopt(data,sigma,timepoints,plotting=TRUE)
 }
 \keyword{ts}
 \seealso{}
