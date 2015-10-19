@@ -38,7 +38,7 @@ All supplementary data are available from [the github wiki page](https://github.
 ## Citation 
 Please cite the following paper if you used this program.
 
-* Hiromi Matsumae, Ryosuke Ishiwata, Toshifumi Minamoto, Norio Ishida, Soichi Ogishima, and Hiroshi Tanaka. <I> submitted</I>.
+* Hiromi Matsumae, Ryosuke Ishiwata, Toshifumi Minamoto, Norio Ishida, Soichi Ogishima, and Hiroshi Tanaka. "Detection of periodic patterns in microarray data reveals novel oscillating transcripts of biological rhythms in <I>Ciona intestinalis</I>" 2015. Artificial Life and Robotics, Springer. (<I> Accepted</I>).
 
 
 ## Contact 
