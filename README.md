@@ -4,7 +4,7 @@ Bioinformatics / detection of periodic patterns in gene expression data
 
 ## Release Info
 Realsed in April 6, 2015.
-Updated in Augst 20, 2015. Validated on Mac OS 10.8.5 and R 3.2.0. 
+Updated in November 18, 2015. Validated on Mac OS 10.8.5 and R 3.2.0. 
 
 ##Introduction
 COSOPT is a statistical method to distinguish a period and phase for a transcript in time-series gene expression analysis.  The source code is provided by C language and R. 
@@ -32,14 +32,14 @@ cosopt(data,sigma,timepoints,plotting=TRUE) # run COSOPT
 Here is MPI_COSOPT which is optimized for parallel computation, MPI. Running MPI_COSOPT requires knowledge of parallel computing. You can also run MPI_COSOPT on SunGridEngine(SGE/UGE). 
 
 ## Supplementary data
-All supplementary data are available from [the github wiki page](https://github.com/mhiromi/cosopt/wiki/Supplementary-data).
+All supplementary data are available from [the github wiki page](https://github.com/mhiromi/cosopt/wiki/Supplementary-data) or our paper. 
 
 
 ## Citation 
 Please cite the following paper if you used this program.
 
-* Hiromi Matsumae, Ryosuke Ishiwata, Toshifumi Minamoto, Norio Ishida, Soichi Ogishima, and Hiroshi Tanaka. "Detection of periodic patterns in microarray data reveals novel oscillating transcripts of biological rhythms in <I>Ciona intestinalis</I>" 2015. Artificial Life and Robotics, Springer. (<I> Accepted</I>).
-
+* Hiromi Matsumae, Ryosuke Ishiwata, Toshifumi Minamoto, Norio Ishida, Soichi Ogishima, and Hiroshi Tanaka. "Detection of periodic patterns in microarray data reveals novel oscillating transcripts of biological rhythms in <I>Ciona intestinalis</I>" 2015. Artificial Life and Robotics, Springer. doi:10.​1007/​s10015-015-0237-6
+Link to the paper: [http://link.springer.com/article/10.1007/s10015-015-0237-6](http://link.springer.com/article/10.1007/s10015-015-0237-6)
 
 ## Contact 
 Please report a bug and ask a question to the following contacts. 
