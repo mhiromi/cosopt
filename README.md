@@ -19,13 +19,15 @@ The code is in code_R/.
 
 ### Running COSOPT on R
 Installation 
-in code_R/ directory you can find "cosopt.tar.gz". Just use a command install.packages as below: 
+
+You can find a compressed package such as "cosopt_0.3.tar.gz" in code_R/ directory. Just use install.packages command as below: 
 
 > install.packages("cosopt_0.3.tar.gz",repos = NULL, type = "source")
 
 
 Running commands
-It is recommended to run COSOPT against a small number of samples on R.
+
+We recommend to run COSOPT against a small number of samples on R.
 
 timepoints <- c(0,8,16,24,32,40,48)     # time points of gene expression data
 
