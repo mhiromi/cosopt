@@ -23,13 +23,13 @@ You can find a compressed package such as "cosopt_0.3.tar.gz" in code_R/ directo
 
 We recommend to run COSOPT against a small number of samples on R.
 
-timepoints <- c(0,8,16,24,32,40,48)     # time points of gene expression data
+> timepoints <- c(0,8,16,24,32,40,48)     # time points of gene expression data
 
-data <- c(-1,0,1,0,-1,0,1)  # signal intensity of each probe in gene expression data
+> data <- c(-1,0,1,0,-1,0,1)  # signal intensity of each probe in gene expression data
 
-sigma <- c(0.1,0.1,0.1,0.1,0.1,0.1,0.1)  # sigma (standard deviation of each probe in the original source code) 
+> sigma <- c(0.1,0.1,0.1,0.1,0.1,0.1,0.1)  # sigma (standard deviation of each probe in the original source code) 
 
-cosopt(data,sigma,timepoints,plotting=TRUE) # run COSOPT
+> cosopt(data,sigma,timepoints,plotting=TRUE) # run COSOPT
 
 ## C version 
 The original source code is written in C. You can find it from  code_C/.
