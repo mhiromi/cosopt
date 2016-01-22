@@ -12,20 +12,14 @@ COSOPT is a statistical method to distinguish a period and phase for a transcrip
 IMPORTANT: This COSOPT has a small difference from the original COSOPT described in Straume et al. 2004. In the original paper, SD within replicates of a probe was used to generate surrogates with white noise,  however we fixed SD to 0.1 in our analysis. If you want to change SD values yourself in the R package, please modify <sigma> variable as follows.
 
 
-## Source Code
-
-### original source code written in C
-The code is in code_R/.
-
-### Running COSOPT on R
-Installation 
+## R version 
+### Installation 
 
 You can find a compressed package such as "cosopt_0.3.tar.gz" in code_R/ directory. Just use install.packages command as below: 
 
 > install.packages("cosopt_0.3.tar.gz",repos = NULL, type = "source")
 
-
-Running commands
+### Running 
 
 We recommend to run COSOPT against a small number of samples on R.
 
@@ -37,7 +31,10 @@ sigma <- c(0.1,0.1,0.1,0.1,0.1,0.1,0.1)  # sigma (standard deviation of each pro
 
 cosopt(data,sigma,timepoints,plotting=TRUE) # run COSOPT
 
-### Running in C with MPI environment
+## C version 
+The original source code is written in C. You can find it from  code_C/.
+
+### Running COSOPT by C with MPI environment
 Here is MPI_COSOPT which is optimized for parallel computation, MPI. Running MPI_COSOPT requires knowledge of parallel computing. You can also run MPI_COSOPT on SunGridEngine(SGE/UGE). 
 
 ## Supplementary data
