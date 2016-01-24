@@ -18,7 +18,7 @@ IMPORTANT: This COSOPT has a small difference from the original COSOPT described
 You can find a compressed package such as "cosopt_0.3.tar.gz" in code_R/ directory. Just use install.packages command as below: 
 
 ```R:
-> install.packages("cosopt_0.3.1.tar.gz",repos = NULL, type = "source")
+> install.packages("cosopt_0.3.tar.gz",repos = NULL, type = "source")
 ```
 
 ### Running 
@@ -34,8 +34,6 @@ gene=1 timecourse=7
 plotting=1
 minimum_freq=0.031250
 ```
-
-A period of this gene is T= 1/f = 1/0.031250 = 32(h).
 
 ## C version 
 The original source code is written in C. You can find it from  code_C/.
